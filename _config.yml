@@ -8,6 +8,11 @@ highlighter: rouge
 title: "Google Sheet To Github Link Website"
 description: > # this means to ignore newlines until "email:"
    A Hack Education & API Evangelist Production
+   
+integration_spreadsheet_key: 1UnsekgLLWlsjIICs93gdSYqEYoOz4asls6QrJChuJB8
+
+github_user: jcbayley
+github_repo: google-sheet-to-github-website
 
 email: info@contrafabulists.com
 #blog logo
