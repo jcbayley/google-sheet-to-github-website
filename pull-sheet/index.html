@@ -70,6 +70,7 @@ title: Update Spreadsheet
         $("#table_info").append("<p>" + sheet.name + " has " + sheet.column_names.join(", ") + "</p>");
       });
 
+      console.log(tabletop.sheets($resource));
       $product = tabletop.sheets($resource).all();
 
       $count = 0;
