@@ -42,12 +42,16 @@ title: Update Spreadsheet
 
     $(document).ready( function() {
       Tabletop.init( { key: $key,
-                       callback: showInfo,
+                       callback: printInfo,
                        wanted: [ $resource ],
                        debug: true } )
     })
 
     console.log($resource);
+    
+    function printInfo(data, tabletop) {
+     console.log(data);   
+    }
 
     function showInfo(data, tabletop) {
 
