@@ -39,19 +39,11 @@ title: Update Spreadsheet
 
     // Grab the token from cookie
     $oAuthToken = Cookies.get('token');
-    
-    $(document).ready( function init() {
-        Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1UnsekgLLWlsjIICs93gdSYqEYoOz4asls6QrJChuJB8/pubhtml',
-                    callback: function(data, tabletop) { 
-                      console.log(data)
-                    },}) 
-    })
+ 
     
     $(document).ready( function init() {
         Tabletop.init( { key: $key,
-                    callback: function(data, tabletop) { 
-                      console.log(data)
-                    },}) 
+                    callback: printInfo,}) 
     })
 
     $(document).ready( function() {
@@ -64,7 +56,7 @@ title: Update Spreadsheet
     console.log($resource);
     
     function printInfo(data, tabletop) {
-     console.log(data);   
+     console.log(data) 
     }
 
     function showInfo(data, tabletop) {
