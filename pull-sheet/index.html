@@ -40,13 +40,13 @@ title: Update Spreadsheet
     // Grab the token from cookie
     $oAuthToken = Cookies.get('token');
     
-    function init() {
-  Tabletop.init( { key: $key,
+    $(document).ready( function init() {
+        Tabletop.init( { key: $key,
                     callback: function(data, tabletop) { 
                       console.log(data)
-                    } )
+                    }, )
 }
-   
+   )
 
     $(document).ready( function() {
       Tabletop.init( { key: $key,
