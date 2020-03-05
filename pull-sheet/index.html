@@ -48,6 +48,15 @@ title: Update Spreadsheet
                     simpleSheet: true } )
 })
     console.log($branch);
+    
+    $(document).ready( function init() {
+        Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1UnsekgLLWlsjIICs93gdSYqEYoOz4asls6QrJChuJB8/edit?usp=sharing',
+                    callback: function(data, tabletop) { 
+                      console.log(data)
+                    },
+                    simpleSheet: true } )
+})
+    console.log($branch);
 
     $(document).ready( function() {
       Tabletop.init( { key: $key,
