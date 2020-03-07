@@ -62,10 +62,13 @@ title: Update Spreadsheet
  
        
       $product = tabletop.sheets($resource).all();
+        
+      $resources = new Array("tst","tst2");
 
       $count = 0;
       $total_count = $product.length;
-      $.each( tabletop.sheets($resource).all(), function(i, service) {
+      $.each($resources, function(res) {
+      $.each( tabletop.sheets(res).all(), function(i, service) {
 
           console.log(i,service);
           $p = {};
@@ -114,6 +117,7 @@ title: Update Spreadsheet
               });
 
             }
+      });
       });
 
     }
