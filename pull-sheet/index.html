@@ -70,11 +70,6 @@ title: Update Spreadsheet
       $.each($resources, function(i,res) {
           console.log(tabletop.sheets(res).all());
           
-          delete $products
-          delete $count 
-          delete $product
-          delete $total_count
-          
           $products = new Array();
           $product = tabletop.sheets(res).all();
           $total_count = $product.length;
@@ -88,9 +83,6 @@ title: Update Spreadsheet
                 $p[$key] = $value;
               });
               $products.push($p);
-              
-              // Grab the token from cookie
-              $oAuthToken = Cookies.get('token');
 
               var github = new Github({token: $oAuthToken,auth: "oauth"});
               var repo = github.getRepo($org,$repo);
