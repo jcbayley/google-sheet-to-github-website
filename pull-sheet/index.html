@@ -50,7 +50,7 @@ title: Update Spreadsheet
 
       $products = new Array();
 
-      console.log("running2");
+      console.log("running1");
       console.log("We found the tables " + tabletop.model_names.join(", "));
       $("#table_info").text("We found the tables " + tabletop.model_names.join(", "));
 
@@ -58,6 +58,12 @@ title: Update Spreadsheet
         $("#table_info").append("<p>" + sheet.name + " has " + sheet.column_names.join(", ") + "</p>");
           //console.log(sheet.name);
       });
+        
+      // Grab the token from cookie
+      $oAuthToken = Cookies.get('token');
+
+      var github = new Github({token: $oAuthToken,auth: "oauth"});
+      var repo = github.getRepo($org,$repo);
  
        
       $product = tabletop.sheets($resource).all();
@@ -89,15 +95,11 @@ title: Update Spreadsheet
 
                 document.getElementById('source').value = $yaml_dump;
 
-                // Grab the token from cookie
-                $oAuthToken = Cookies.get('token');
-
-                var github = new Github({token: $oAuthToken,auth: "oauth"});
-                var repo = github.getRepo($org,$repo);
-
                 $writepath = '_data/' + res + '.yaml';
 
-                repo.write($branch,$writepath, $yaml_dump, 'Save', function(err) { });
+                repo.write($branch,$writepath, $yaml_dump, 'Save', function(err) { 
+                console.log(err);
+                });
                 console.log("writing 1:" + $writepath);
                 repo.getTree($branch + '?recursive=true', function(err, tree) {
 
