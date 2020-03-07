@@ -76,7 +76,15 @@ title: Update Spreadsheet
           console.log(tabletop.sheets(res).all());
           
           delete $products
+          delete $count 
+          delete $product
+          delete $total_count
+          
           $products = new Array();
+          $product = tabletop.sheets(res).all()
+          $total_count = $product.length;
+          
+          $count = 0;
       
           $.each( tabletop.sheets(res).all(), function(i, service) {
 
