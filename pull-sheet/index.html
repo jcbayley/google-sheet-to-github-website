@@ -48,7 +48,6 @@ title: Update Spreadsheet
 
     function showInfo(data, tabletop) {
 
-      $products = new Array();
 
       console.log("running");
       console.log("We found the tables " + tabletop.model_names.join(", "));
@@ -67,7 +66,9 @@ title: Update Spreadsheet
       $count = 0;
       $total_count = $product.length;
       $.each($resources, function(i,res) {
-        console.log(tabletop.sheets(res).all());
+          console.log(tabletop.sheets(res).all());
+          
+          $products = new Array();
       
           $.each( tabletop.sheets(res).all(), function(i, service) {
 
