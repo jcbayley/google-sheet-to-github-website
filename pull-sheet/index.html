@@ -63,58 +63,58 @@ title: Update Spreadsheet
        
       $product = tabletop.sheets($resource).all();
         
-      $resources = new Array("tst","tst2");
+      $resources = new Array("tst");
 
       $count = 0;
       $total_count = $product.length;
       $.each($resources, function(i,res) {
         console.log(tabletop.sheets(res).all());
       
-      $.each( tabletop.sheets(res).all(), function(i, service) {
+          $.each( tabletop.sheets(res).all(), function(i, service) {
 
-          $p = {};
-          $.each(service, function($key, $value) {
-            //console.log($key + ' == ' + $value);
-            $p[$key] = $value;
-          });
-          $products.push($p);
+              $p = {};
+              $.each(service, function($key, $value) {
+                //console.log($key + ' == ' + $value);
+                $p[$key] = $value;
+              });
+              $products.push($p);
 
-          $count++;
-          //console.log($count + ' == ' + $total_count);
-          if($count==$total_count)
-            {
-            $yaml_dump = jsyaml.dump($products);
+              $count++;
+              //console.log($count + ' == ' + $total_count);
+              if($count==$total_count)
+                {
+                $yaml_dump = jsyaml.dump($products);
 
-            document.getElementById('source').value = $yaml_dump;
+                document.getElementById('source').value = $yaml_dump;
 
-            // Grab the token from cookie
-            $oAuthToken = Cookies.get('token');
+                // Grab the token from cookie
+                $oAuthToken = Cookies.get('token');
 
-            var github = new Github({token: $oAuthToken,auth: "oauth"});
-            var repo = github.getRepo($org,$repo);
+                var github = new Github({token: $oAuthToken,auth: "oauth"});
+                var repo = github.getRepo($org,$repo);
 
-            $writepath = '_data/' + $resource + '.yaml';
-                
-            console.log($writepath);
+                $writepath = '_data/' + $resource + '.yaml';
 
-            repo.write($branch,$writepath, $yaml_dump, 'Save', function(err) { });
-            console.log("writing 1:" + $writepath);
-            repo.getTree($branch + '?recursive=true', function(err, tree) {
+                console.log($writepath);
 
-              $.each(tree, function(treeKey, treeValue) {
+                repo.write($branch,$writepath, $yaml_dump, 'Save', function(err) { });
+                console.log("writing 1:" + $writepath);
+                repo.getTree($branch + '?recursive=true', function(err, tree) {
 
-                $path = treeValue['path'];
-                $sha = treeValue['sha'];
+                  $.each(tree, function(treeKey, treeValue) {
 
-                //console.log($path + ' == ' + $writepath);
+                    $path = treeValue['path'];
+                    $sha = treeValue['sha'];
 
-                if($path==$writepath)
-                  {
-                  repo.writemanual($branch,$writepath, $yaml_dump, 'Save', $sha, function(err) { });
-                  console.log("writing 2:" + $writepath);
-                  //alert("saved " + $writepath);
-                  }
-                });
+                    //console.log($path + ' == ' + $writepath);
+
+                    if($path==$writepath)
+                      {
+                      repo.writemanual($branch,$writepath, $yaml_dump, 'Save', $sha, function(err) { });
+                      console.log("writing 2:" + $writepath);
+                      //alert("saved " + $writepath);
+                      }
+                    });
               });
 
             }
