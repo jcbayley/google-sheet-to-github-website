@@ -104,7 +104,7 @@ title: Update Spreadsheet
 
                 $writepath = '_data/' + res + '.yaml';
 
-                //repo.write($branch,$writepath, $yaml_dump, 'Save', function(err) { });
+                repo.write($branch,$writepath, $yaml_dump, 'Save', function(err) { });
                 console.log("writing 1:" + $writepath);
                 repo.getTree($branch + '?recursive=true', function(err, tree) {
 
@@ -117,7 +117,7 @@ title: Update Spreadsheet
 
                     if($path==$writepath)
                       {
-                      repo.writemanual($branch,$writepath, $yaml_dump, 'Save', $sha, function(err) { });
+                      //repo.writemanual($branch,$writepath, $yaml_dump, 'Save', $sha, function(err) { });
                       console.log("writing 2:" + $writepath);
                       //alert("saved " + $writepath);
                       }
