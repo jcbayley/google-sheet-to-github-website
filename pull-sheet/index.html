@@ -67,8 +67,8 @@ title: Update Spreadsheet
 
       $count = 0;
       $total_count = $product.length;
-      $.each($resources, function(res) {
-          console.log(res);
+      $.each($resources, function(i,res) {
+          console.log(i,res);
       });
       $.each( tabletop.sheets($resource).all(), function(i, service) {
 
