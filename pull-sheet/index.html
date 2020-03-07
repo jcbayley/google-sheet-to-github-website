@@ -68,7 +68,9 @@ title: Update Spreadsheet
       $count = 0;
       $total_count = $product.length;
       $.each($resources, function(res) {
-      $.each( tabletop.sheets(res).all(), function(i, service) {
+          console.log(res);
+      });
+      $.each( tabletop.sheets($resource).all(), function(i, service) {
 
           console.log(i,service);
           $p = {};
@@ -118,7 +120,7 @@ title: Update Spreadsheet
 
             }
       });
-      });
+      
 
     }
 
