@@ -43,7 +43,6 @@ title: Update Spreadsheet
     $(document).ready( function() {
       Tabletop.init( { key: $key,
                        callback: showInfo,
-                       wanted: [ $resource ],
                        debug: true } )
     })
 
@@ -62,6 +61,7 @@ title: Update Spreadsheet
 
       $.each( tabletop.sheets(), function(i, sheet) {
         $("#table_info").append("<p>" + sheet.name + " has " + sheet.column_names.join(", ") + "</p>");
+          console.log(sheet.name);
       });
 
       console.log(tabletop.sheets($resource));
