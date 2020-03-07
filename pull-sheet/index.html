@@ -70,6 +70,8 @@ title: Update Spreadsheet
       $.each($resources, function(i,res) {
           console.log(tabletop.sheets(res).all());
           
+          $writepath = '_data/' + res + '.yaml';
+          
           $products = new Array();
           $product = tabletop.sheets(res).all();
           $total_count = $product.length;
@@ -94,8 +96,6 @@ title: Update Spreadsheet
                 $yaml_dump = jsyaml.dump($products);
 
                 document.getElementById('source').value = $yaml_dump;
-
-                $writepath = '_data/' + res + '.yaml';
 
                 repo.write($branch,$writepath, $yaml_dump, 'Save', function(err) { });
                 console.log("writing 1:" + $writepath);
