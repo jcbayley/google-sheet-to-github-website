@@ -104,8 +104,7 @@ title: Update Spreadsheet
                 repo.getTree($branch + '?recursive=true', function(err, tree) {
 
                   $.each(tree, function(treeKey, treeValue) {
-
-                    $writepath = '_data/' + $resource + '.yaml';
+                      
                     $path = treeValue['path'];
                     $sha = treeValue['sha'];
 
