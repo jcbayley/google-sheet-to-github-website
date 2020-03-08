@@ -97,9 +97,28 @@ title: Update Spreadsheet
 
                 document.getElementById('source').value = $yaml_dump;
 
-                repo.write($branch,$writepath, $yaml_dump, 'Save', function(err) { });
-                console.log("writing 1:" + $writepath);
-                console.log($yaml_dump);
+                //repo.write($branch,$writepath, $yaml_dump, 'Save', function(err) { });
+                //console.log("writing 1:" + $writepath);
+                //console.log($yaml_dump);
+                    
+                repo.getTree($branch + '?recursive=true', function(err, tree) {
+
+                  $.each(tree, function(treeKey, treeValue) {
+
+                    $writepath = '_data/' + $resource + '.yaml';
+                    $path = treeValue['path'];
+                    $sha = treeValue['sha'];
+
+                    //console.log($path + ' == ' + $writepath);
+
+                    if($path==$writepath)
+                      {
+                      repo.writemanual('master',$writepath, $yaml_dump, 'Save', $sha, function(err) { });
+                      console.log("writing " + $writepath);
+                      //alert("saved " + $writepath);
+                      }
+                    });
+                  });
                 }
               });
 
