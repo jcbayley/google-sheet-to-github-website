@@ -97,8 +97,8 @@ title: Update Spreadsheet
 
                 document.getElementById('source').value = $yaml_dump;
 
-                //repo.write($branch,$writepath, $yaml_dump, 'Save', function(err) { });
-                //console.log("writing 1:" + $writepath);
+                repo.write($branch,$writepath, $yaml_dump, 'Save', function(err) { });
+                console.log("writing 1:" + $writepath);
                 //console.log($yaml_dump);
                     
                 repo.getTree($branch + '?recursive=true', function(err, tree) {
