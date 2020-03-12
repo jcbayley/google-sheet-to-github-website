@@ -88,7 +88,7 @@ title: Update Spreadsheet
               //console.log($count + ' == ' + $total_count);
               if($count==$total_count)
                 {
-                $yaml_dump = jsyaml.dump($products);
+                $yaml_dump = unescape(encodeURIComponent(jsyaml.dump($products)));
                     
                 console.log($yaml_dump);
 
