@@ -64,10 +64,6 @@ title: Update Spreadsheet
         
  
        
-      $product = tabletop.sheets($resource).all();
-
-      $count = 0;
-      $total_count = $product.length;
       $.each($resources, function(i,res) {
           console.log(tabletop.sheets(res).all());
           
