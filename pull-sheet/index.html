@@ -54,16 +54,16 @@ title: Update Spreadsheet
       console.log("We found the tables " + tabletop.model_names.join(", "));
       $("#table_info").text("We found the tables " + tabletop.model_names.join(", "));
 
+      $resources = new Array();
       $.each( tabletop.sheets(), function(i, sheet) {
         $("#table_info").append("<p>" + sheet.name + " has " + sheet.column_names.join(", ") + "</p>");
-          //console.log(sheet.name);
+        $resources.push(sheet.name);
+        console.log(sheet.name);
       });
         
  
        
       $product = tabletop.sheets($resource).all();
-        
-      $resources = new Array("arts","religious");
 
       $count = 0;
       $total_count = $product.length;
