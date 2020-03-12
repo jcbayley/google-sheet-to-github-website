@@ -76,7 +76,7 @@ title: Update Spreadsheet
 
               $p = {};
               $.each(service, function($key, $value) {
-                console.log($key + ' == ' + $value);
+                //console.log($key + ' == ' + $value);
                 $p[$key] = $value;
               });
               $products.push($p);
@@ -89,6 +89,8 @@ title: Update Spreadsheet
               if($count==$total_count)
                 {
                 $yaml_dump = jsyaml.dump($products);
+                    
+                JSON.parse($yaml_dump);
 
                 document.getElementById('source').value = $yaml_dump;
 
